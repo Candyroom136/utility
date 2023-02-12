@@ -1,0 +1,27 @@
+
+<div id="paypal-button-container-P-test"></div>
+<script src="https://www.paypal.com/sdk/js?components=hosted-fields,buttons&client-id=testClient&vault=true&intent=subscription"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      //sdk참고: https://developer.paypal.com/sdk/js/reference/
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-test',
+          custom_id: 7
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      },
+      onCancel: function(data, actions) {
+        alert('캔슬')
+      }
+  }).render('#paypal-button-container-P-test'); // Renders the PayPal button
+</script>

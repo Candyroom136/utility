@@ -1,0 +1,12 @@
+
+const generateBase64Token = function(username, password) {
+  const plainCredintial = username + ':' + password;
+  const encodedCredential = Buffer.from(plainCredintial).toString('base64')
+  return encodedCredential
+
+}
+
+const username = 'abcd'
+const password = '1234'
+const encodedCredential = generateBase64Token(username, password)
+console.log(encodedCredential)
