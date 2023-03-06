@@ -1,3 +1,5 @@
+const util = require('util');
+
 const jsonParser = function({ json }) {
     const parsedJSON = JSON.parse(json);
 
@@ -7,4 +9,4 @@ const jsonParser = function({ json }) {
 const json = ``
 const parsedJSON = jsonParser({json});
 
-console.log(parsedJSON)
+console.log(util.inspect(parsedJSON, false, null, true))
