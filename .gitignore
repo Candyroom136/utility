@@ -166,6 +166,9 @@ $RECYCLE.BIN/
 **/build
 
 # Service
-opentown
+secret
 doodle.js
 static-storage
+constant.js
+constant.py
+example.jpeg
