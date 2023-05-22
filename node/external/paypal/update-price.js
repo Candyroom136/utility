@@ -10,7 +10,7 @@ async function updatePrice() {
       path: '/plan/billing_cycles/@sequence==1/pricing_scheme/fixed_price',
       value: {
         currency_code: "USD",
-        value: "200.00"
+        value: "9.99"
       } 
     }
   ];
