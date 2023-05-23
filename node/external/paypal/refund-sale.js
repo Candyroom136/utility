@@ -8,7 +8,7 @@ async function refundSale() {
   const data = {
     amount: {
       currency_code: 'USD',
-      value: 9.40
+      value: 9.99
     }
   };
   const config = {

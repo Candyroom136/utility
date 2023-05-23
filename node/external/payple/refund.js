@@ -1,24 +1,21 @@
 const axios = require('axios');
 const util = require('util');
-const authenticationPartner = require('./authenticate-partner')
-const { PAY } = require('./constant')
+const authenticationPartner = require('./authenticate-partner');
+const { REFUND } = require('./constant')
 
-const cancelSubscription = async function() {
-  const authInfo = await authenticationPartner({ forPay: true})
+const refund = async function() {
+  const authInfo = await authenticationPartner({ forRefund: true})
   const { cst_id: cstId, custKey, AuthKey: authKey, PCD_PAY_URL } = authInfo
   const uri = `https://democpay.payple.kr${PCD_PAY_URL}`
   const data = {
-    "PCD_CST_ID": cstId,
-    "PCD_CUST_KEY": custKey,
-    "PCD_AUTH_KEY": authKey,
-    "PCD_PAY_TYPE": "card",	
-    "PCD_PAYER_ID": PAY.SUBSCRIPTION_ID,		
-    "PCD_PAY_GOODS": PAY.PRODUCT_NAME,	
-    "PCD_SIMPLE_FLAG": "Y",
-    "PCD_PAY_TOTAL": PAY.AMOUNT,
-    "PCD_PAY_ISTAX": "Y",
-    "PCD_PAYER_EMAIL": PAY.EMAIL,
-    "PCD_PAYER_NO": PAY.USER_ID,
+    PCD_CST_ID: cstId,
+    PCD_CUST_KEY: custKey,
+    PCD_AUTH_KEY: authKey,
+    PCD_REFUND_KEY: REFUND.PCD_REFUND_KEY,
+    PCD_PAYCANCEL_FLAG: 'Y',
+    PCD_PAY_OID: REFUND.PCD_PAY_OID,
+    PCD_PAY_DATE: REFUND.PCD_PAY_DATE,
+    PCD_REFUND_TOTAL: REFUND.PCD_REFUND_TOTAL,
   }
   const config = {
     headers: {
@@ -31,6 +28,6 @@ const cancelSubscription = async function() {
   return res;
 }
 
-cancelSubscription()
+refund()
   .then(res => console.log(util.inspect(res.data, false, null, true)))
   .catch(err => console.log(util.inspect(err, false, null, true)));

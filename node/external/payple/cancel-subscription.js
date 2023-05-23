@@ -1,6 +1,6 @@
 const axios = require('axios')
 const util = require('util')
-const authenticationPartner = require('./authentication-partner')
+const authenticationPartner = require('./authenticate-partner')
 const { CANCEL_SUBSCRIPTION } = require('./constant')
 
 const cancelSubscription = async function() {
@@ -27,4 +27,4 @@ const cancelSubscription = async function() {
 
 cancelSubscription()
   .then(res => console.log(util.inspect(res.data, false, null, true)))
-  .then(err => console.log(util.inspect(err, false, null ,true)));
+  .catch(err => console.log(util.inspect(err, false, null ,true)));

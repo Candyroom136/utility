@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios')
 
-const authenticationPartner = async function({forPay = false, forCancel = false } = {}) {
+const authenticationPartner = async function({forPay = false, forCancel = false, forRefund = false } = {}) {
 
   const custKey = process.env.PAYPLE_CUST_KEY;
   const cstId = process.env.PAYPLE_CST_ID;
@@ -18,6 +18,8 @@ const authenticationPartner = async function({forPay = false, forCancel = false 
     data.PCD_SIMPLE_FLAG = 'Y'
   } else if (forCancel) {
     data.PCD_PAY_WORK = 'PUSERDEL'
+  } else if (forRefund) {
+    data.PCD_PAYCANCEL_FLAG = 'Y'
   }
 
   const config = {
