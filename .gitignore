@@ -173,3 +173,6 @@ constant.js
 constant.py
 example.jpeg
 payple
+
+private_key.pem
+public_key.pem

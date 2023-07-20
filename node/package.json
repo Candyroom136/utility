@@ -16,6 +16,7 @@
     "jsonwebtoken": "8.5.1",
     "jws": "4.0.0",
     "lodash": "4.17.21",
+    "node-rsa": "^1.1.1",
     "paypal-rest-sdk": "1.8.1",
     "sharp": "0.30.7",
     "short-uuid": "4.2.2"
