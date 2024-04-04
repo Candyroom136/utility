@@ -1,5 +1,5 @@
 import requests, json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 PORTONE_URL = "https://api.iamport.kr"
 
@@ -45,22 +45,26 @@ def pay_schedule(
     access_token: str,
     email: str,
     prod_name: str,
-    merchang_uid: str,
+    merchant_uid: str,
     amount: float,
     currency: str,
+    custom_data: dict,
 ):
+    now = datetime.now()
+
     url = f"{PORTONE_URL}/subscribe/payments/schedule"
     headers = get_headers(access_token=access_token)
     data = {
         "customer_uid": billing_key,
         "schedules": [
             {
-                "merchant_uid": merchang_uid,
-                "schedule_at": int(datetime.now().timestamp()) + 60,
+                "merchant_uid": merchant_uid,
+                "schedule_at": (now + timedelta(seconds=5)).timestamp(),
                 "amount": amount,
                 "currency": currency,
                 "name": prod_name,
                 "buyer_email": email,
+                "custom_data": custom_data,
             }
         ],
     }
