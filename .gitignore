@@ -180,3 +180,4 @@ public_key2.pem
 private_key2.pem
 test.*
 public
+.env.aa
